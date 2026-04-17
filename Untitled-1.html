@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DreamRest | Almohadas Ergonómicas</title>
+<style>
+body{
+margin:0;
+font-family: Arial, Helvetica, sans-serif;
+scroll-behavior:smooth;
+background:#f4f8fb;
+color:#333;
+}
+header{
+background:#ffffff;
+padding:15px 30px;
+position:fixed;
+width:100%;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+z-index:1000;
+}
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+nav a{
+margin:0 10px;
+text-decoration:none;
+color:#333;
+font-weight:bold;
+}
+.hero{
+padding-top:120px;
+text-align:center;
+padding-bottom:80px;
+background:#dfefff;
+}
+.hero h1{
+
+font-size:40px;
+}
+.btn{
+background:#4da6ff;
+color:white;
+padding:12px 20px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+margin-top:15px;
+}
+section{
+padding:60px 30px;
+}
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+.card{
+background:white;
+border-radius:15px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+padding:20px;
+text-align:center;
+}
+.card img{
+width:100%;
+border-radius:10px;
+}
+.accordion{
+background:#fff;
+border-radius:10px;
+margin-bottom:10px;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+.accordion h3{
+margin:0;
+padding:15px;
+cursor:pointer;
+}
+.accordion p{
+display:none;
+padding:15px;
+}
+form{
+background:#fff;
+padding:20px;
+
+border-radius:15px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+max-width:500px;
+margin:auto;
+}
+input, textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+border-radius:8px;
+border:1px solid #ccc;
+}
+footer{
+background:#333;
+color:white;
+text-align:center;
+padding:20px;
+}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<div><strong>DreamRest</strong></div>
+<div>
+<a href="#productos">Productos</a>
+<a href="#beneficios">Beneficios</a>
+<a href="#faq">FAQ</a>
+<a href="#contacto">Contacto</a>
+</div>
+</nav>
+</header>
+<section class="hero">
+<h1>Duerme mejor, vive mejor</h1>
+<p>Almohadas ergonómicas para un descanso perfecto</p>
+<a href="#productos"><button class="btn">Ver productos</button></a>
+</section>
+<section id="quienes">
+<h2>¿Quiénes somos?</h2>
+<p>Somos una tienda especializada en almohadas diseñadas para mejorar tu postura,
+reducir dolores cervicales y brindarte el mejor descanso posible.</p>
+</section>
+<section id="productos">
+
+<h2>Catálogo de Almohadas</h2>
+<div class="cards">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1582582494700-5a9a2b9a9b1f" />
+<h3>Almohada Memory Foam</h3>
+<p>$899 MXN</p>
+</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1600180758895-1b6c6b8e0c55" />
+<h3>Almohada Cervical</h3>
+<p>$1099 MXN</p>
+</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" />
+<h3>Almohada Gel Frío</h3>
+<p>$999 MXN</p>
+</div>
+</div>
+</section>
+<section id="beneficios">
+<h2>Beneficios</h2>
+<div class="accordion">
+<h3>Mejora la postura al dormir</h3>
+<p>Diseño ergonómico que alinea cuello y columna.</p>
+</div>
+<div class="accordion">
+<h3>Reduce dolores cervicales</h3>
+<p>Distribuye la presión correctamente.</p>
+</div>
+<div class="accordion">
+<h3>Mejor calidad de sueño</h3>
+<p>Mayor comodidad durante toda la noche.</p>
+</div>
+</section>
+<section id="faq">
+<h2>Preguntas Frecuentes</h2>
+<p><strong>¿Son lavables?</strong> Sí, las fundas son lavables.</p>
+<p><strong>¿Cuánto duran?</strong> Hasta 3 años con uso adecuado.</p>
+</section>
+<section id="contacto">
+<h2>Pedido / Contacto</h2>
+<form id="formulario">
+
+<input type="text" id="nombre" placeholder="Nombre" required>
+<input type="email" id="correo" placeholder="Correo" required>
+<textarea id="mensaje" placeholder="Tu pedido o mensaje" required></textarea>
+<button class="btn" type="submit">Enviar</button>
+</form>
+</section>
+<footer>
+<p>DreamRest © 2026 | Síguenos en redes sociales</p>
+</footer>
+<script>
+// Acordeones
+document.querySelectorAll(".accordion h3").forEach(item=>{
+item.addEventListener("click",()=>{
+const p = item.nextElementSibling;
+p.style.display = p.style.display === "block" ? "none" : "block";
+});
+});
+// Envío a Google Sheets
+document.getElementById("formulario").addEventListener("submit", function(e){
+e.preventDefault();
+const data = {
+nombre: document.getElementById("nombre").value,
+correo: document.getElementById("correo").value,
+mensaje: document.getElementById("mensaje").value
+};
+fetch("AQUI_PEGA_TU_URL_DE_WEB_APP", {
+method: "POST",
+body: JSON.stringify(data)
+})
+.then(()=>alert("Enviado correctamente"))
+.catch(()=>alert("Error al enviar"));
+});
+</script>
+</body>
+</html>
